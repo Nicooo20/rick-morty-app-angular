@@ -1,0 +1,51 @@
+.custom-tabs {
+    background-color: #2a2a2a; // Fondo oscuro similar a la tabla
+    border-radius: 10px;
+    box-shadow: 0 0 0.3em 0.2em rgba(0, 188, 212, 0.5); // Sombra resaltada
+    width: 100%; // Para que no esté pegado a la izquierda
+    margin: 20px auto; // Centrado
+    padding: 10px;
+    border: 1px solid #00bcd4; // Borde similar al diseño de la tabla
+}
+
+// Estilos para los títulos de las pestañas
+::ng-deep .mat-tab-label {
+    color: white !important;
+    opacity: 0.7;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+// Resaltar el tab activo con un borde azul
+::ng-deep .mat-tab-label.mat-tab-label-active {
+    color: #00bcd4 !important;
+    opacity: 1;
+    border-bottom: 3px solid #00bcd4;
+}
+
+// Estilo del contenido dentro del tab
+.custom-tab-content {
+    padding: 16px;
+    color: white;
+    font-size: 14px;
+}
+
+// Estilos para las listas dentro de los tabs
+.custom-tab-content ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; // Espaciado entre elementos
+}
+
+.custom-tab-content li {
+    background-color: #1e1e1e;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 4px solid #00bcd4;
+    flex: 1 1 calc(33.333% - 10px); // Se distribuyen en 3 columnas, restando el gap
+    text-align: center;
+}
+
+

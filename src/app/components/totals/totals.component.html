@@ -1,0 +1,21 @@
+<mat-tab-group class="custom-tabs">
+  <mat-tab label="Total Species">
+    <div class="custom-tab-content">
+      <ul>
+        <li *ngFor="let item of speciesTotals">
+          {{ item.species }}: {{ item.count }}
+        </li>
+      </ul>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Total Types">
+    <div class="custom-tab-content">
+      <ul>
+        <li *ngFor="let item of typeTotals">
+          {{ item.type }}: {{ item.count }}
+        </li>
+      </ul>
+    </div>
+  </mat-tab>
+</mat-tab-group>

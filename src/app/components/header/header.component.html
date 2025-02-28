@@ -1,0 +1,9 @@
+<mat-toolbar color="primary" class="header">
+  <span class="title">Rick and Morty App</span>
+  <span class="spacer"></span>
+  <div *ngIf="favoriteCharacter" (click)="showFavoriteDetails()" class="favorite">
+    <mat-icon class="favorite-icon">star</mat-icon>
+    <span class="favorite-name">Favorito : </span>
+    <span class="favorite-name">{{ favoriteCharacter.name }}</span>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,141 @@
+// Colores ajustados
+$primary-color: #00b5cc; // Azul neón
+$secondary-color: #00ff88; // Verde neón
+$dark-bg: #2a2a2a; // Un gris más claro para mejorar el contraste
+$lighter-bg: #3a3a3a; // Para los filtros
+$text-color: #ffffff;
+$input-bg: #00b5cc;
+
+// Contenedor Principal (mejor contraste en el fondo)
+.main-table {
+    width: 100%;
+    background: linear-gradient(135deg, #1e1e1e, #2e2e2e); // Degradado sutil
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 0.7em 0.4em $secondary-color;
+}
+
+// Filtros de búsqueda mejorados
+::ng-deep.filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    justify-content: center;
+
+    mat-form-field {
+        background: $primary-color; // Fondo del input
+        border-radius: 8px;
+        padding: 4px 10px;
+
+        mat-select {
+            color: white !important; // Color del texto cuando se selecciona un valor
+        }
+
+        // Asegurar que el texto seleccionado en `mat-select` sea blanco
+        .mat-select-value {
+            color: white !important;
+        }
+
+        // Placeholder blanco antes de seleccionar
+        .mat-select-placeholder {
+            color: rgba(29, 28, 28, 0.932) !important;
+        }
+    }
+
+
+
+}
+
+// Estilos para el panel desplegable del select
+.mat-select-panel {
+    background: $dark-bg !important; // Fondo oscuro
+    color: white !important; // Texto blanco en la lista de opciones
+}
+
+// Color de las opciones dentro del select
+.mat-option {
+    color: $secondary-color !important; // Verde neón para las opciones
+    background-color: $dark-bg !important; // Fondo oscuro
+}
+
+// Hover en las opciones del select
+.mat-option:hover {
+    background: #000000ad !important;
+}
+
+input {
+    color: white !important; // Texto blanco dentro del input
+    background: $input-bg !important; // Mismo fondo del select
+    border: 1px solid $primary-color;
+    border-radius: 4px;
+}
+
+// Cambiar color del placeholder en el input
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important; // Placeholder en blanco con opacidad
+}
+
+// Tabla de Personajes (mejor separación de colores)
+table {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05); // Un tono más claro
+    border: 1px solid $primary-color;
+
+    th {
+        background: $primary-color;
+        color: $text-color;
+        padding: 12px;
+        text-align: left;
+        font-weight: bold;
+
+        
+    }
+
+    td {
+        padding: 10px;
+        color: $text-color;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    tr:hover {
+        background: rgba(0, 181, 204, 0.3); // Más brillo en hover
+    }
+}
+
+
+// Paginador mejorado
+mat-paginator {
+    margin-top: 16px;
+    background: $dark-bg;
+    border-radius: 8px;
+    color: $text-color;
+
+    .mat-option {
+        color: white !important; // Color de las opciones
+    }
+
+    .mat-option.mat-selected {
+        background-color: #00bcd4 !important; // Color resaltado cuando está seleccionado
+    }
+}
+
+::ng-deep .mat-paginator-page-size .mat-select-trigger {
+    // color: white !important; // Cambia el color del texto
+    background-color: $secondary-color !important; // Fondo oscuro para el menú
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+::ng-deep .mat-sort-header-arrow {
+    color: $secondary-color !important;
+  }
+
+
+
+
+
+
+

@@ -1,0 +1,90 @@
+<div class="main-table">
+  <!-- Filtros -->
+  <div class="filters">
+    <mat-form-field>
+      <input
+        matInput
+        [(ngModel)]="filterName"
+        placeholder="Filtrar por nombre"
+        (ngModelChange)="applyFilters()"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select
+        [(ngModel)]="filterStatus"
+        placeholder="Filtrar por estado"
+        (ngModelChange)="applyFilters()"
+      >
+        <mat-option value="">Todos</mat-option>
+        <mat-option value="alive">Vivo</mat-option>
+        <mat-option value="dead">Muerto</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <!-- Tabla de personajes -->
+  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
+
+    <!-- Columna Nombre -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenado por Nombre">Nombre</th>
+      <td mat-cell *matCellDef="let character">{{ character.name }}</td>
+    </ng-container>
+
+    <!-- Columna Estado -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+      <td mat-cell *matCellDef="let character">{{ character.status }}</td>
+    </ng-container>
+
+    <!-- Columna Especie -->
+    <ng-container matColumnDef="species">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Especie</th>
+      <td mat-cell *matCellDef="let character">{{ character.species }}</td>
+    </ng-container>
+
+    <!-- Columna Tipo -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
+      <td mat-cell *matCellDef="let character">{{ character.type || 'N/A' }}</td>
+    </ng-container>
+
+    <!-- Columna Género -->
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Género</th>
+      <td mat-cell *matCellDef="let character">{{ character.gender }}</td>
+    </ng-container>
+
+    <!-- Columna Creado -->
+    <ng-container matColumnDef="created">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Creado</th>
+      <td mat-cell *matCellDef="let character">{{ character.created | date }}</td>
+    </ng-container>
+
+    <!-- Columna Acciones -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let character">
+        <button mat-button (click)="selectCharacter(character)">Seleccionar</button>
+        <button mat-button (click)="markAsFavorite(character)">Favorito</button>
+      </td>
+    </ng-container>
+
+    <!-- Filas -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- Paginador -->
+  <!-- <mat-paginator
+    [pageSizeOptions]="[10, 20, 50]"
+    showFirstLastButtons
+    (page)="loadCharacters($event.pageIndex + 1)"
+  ></mat-paginator> -->
+  <mat-paginator 
+  [pageSizeOptions]="[10, 20]"
+  showFirstLastButtons
+  (page)="onPageChange($event)">
+</mat-paginator>
+</div>

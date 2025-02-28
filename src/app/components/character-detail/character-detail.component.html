@@ -1,0 +1,29 @@
+<div *ngIf="character" class="details-container">
+  <mat-card class="character-card">
+    <div class="character-header">{{ character.name }}</div>
+    <img mat-card-image [src]="character.image" alt="{{ character.name }}" class="character-image"/>
+    <div class="character-info">
+      <p><mat-icon>favorite</mat-icon> <strong>Estado:</strong> {{ character.status }}</p>
+      <p><mat-icon>biotech</mat-icon> <strong>Especie:</strong> {{ character.species }}</p>
+      <p><mat-icon>label</mat-icon> <strong>Tipo:</strong> {{ character.type || 'N/A' }}</p>
+      <p><mat-icon>wc</mat-icon> <strong>Género:</strong> {{ character.gender }}</p>
+      
+      <!-- Origen del personaje -->
+      <p><mat-icon>public</mat-icon> <strong>Origen:</strong> {{ character.origin?.name || 'Desconocido' }}</p>
+      <p><mat-icon>people</mat-icon> <strong>Residente en origen:</strong> {{ originResident }}</p>
+
+      <!-- Ubicación actual del personaje -->
+      <p><mat-icon>place</mat-icon> <strong>Ubicación:</strong> {{ character.location?.name }}</p>
+      <p><mat-icon>people</mat-icon> <strong>Residente en ubicación:</strong> {{ locationResident }}</p>
+
+      <!-- Episodio -->
+      <p *ngIf="character.firstEpisode">
+        <mat-icon>movie</mat-icon> <strong>Episodio:</strong> {{ character.firstEpisode.name }} - 
+        {{ character.firstEpisode.episode }} (N° {{ character.firstEpisode.id }})
+      </p>
+      <p *ngIf="!character.firstEpisode">
+        <mat-icon>movie</mat-icon> <strong>Episodio:</strong> No tiene episodios
+      </p>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,75 @@
+// Colores ajustados
+$primary-color: #00b5cc; // Azul neón
+$secondary-color: #00ff88; // Verde neón
+$dark-bg: #2a2a2a; // Un gris más claro para mejorar el contraste
+$lighter-bg: #3a3a3a; // Para los filtros
+$text-color: #ffffff;
+$input-bg: #00b5cc;
+
+.details-container {
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+.character-card {
+    background-color: #2a2a2a; // Mismo fondo que la tabla
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 197, 27, 0.582);
+    width: 100%;
+    max-width: 350px;
+    border: 1px solid #00ff88; 
+    text-align: center; // Asegura que todo el contenido esté centrado
+}
+
+.character-header {
+    background-color: $primary-color;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+}
+
+//Ajustar la imagen del personaje
+.character-image {
+    width: 80%; // Ajusta el tamaño de la imagen
+    height: auto;
+    max-height: 180px;
+    object-fit: cover;
+    display: block;
+    margin: 10px auto; // Centra la imagen horizontalmente
+    border-bottom: 2px solid #00bcd4;
+}
+
+//Ajustar la informacion del personaje
+.character-info {
+    padding: 16px;
+    font-size: 14px;
+
+    p {
+        margin: 8px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 4px;
+    }
+
+    strong {
+        color: #00bcd4;
+    }
+
+}
+.character-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px; // Espaciado entre icono y texto
+    margin: 5px 0;
+
+}
+
+mat-icon {
+    color: $secondary-color !important;
+    fill: $secondary-color !important;
+}
+

@@ -1,0 +1,39 @@
+.main-container {
+    display: flex;
+    gap: 40px;
+    padding: 16px;
+}
+
+.table-section {
+    flex: 1; // La tabla toma más espacio
+}
+
+.detail-section {
+    flex: 2; // El detalle ocupa menos espacio
+    max-width: 400px;
+    margin-top: 50px;
+}
+
+
+// Ajustar la posición de los tabs
+app-totals {
+    display: flex;
+    justify-content: center;
+    width: 80%; // Ancho ajustado para coincidir con la tabla
+    margin-left: 20px;
+}
+
+
+// Estilos responsive
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .table-section,
+    .detail-section,
+    app-totals {
+        width: 100%;
+    }
+}
