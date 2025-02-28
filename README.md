@@ -1,27 +1,61 @@
-# ZendaRickandmortyNicolasriquelme
+# 🚀 Rick and Morty App - Angular 14
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
+A **dashboard-style** application that uses the public [Rick and Morty API](https://rickandmortyapi.com/) to display characters from the series. It includes a **paginator**, **advanced search functions**, and a modern design with **Angular Material**.
 
-## Development server
+## 📷 Preview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Here are some screenshots of the application:
 
-## Code scaffolding
+### 🖼️ Home Page
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![Home Page](src/assets/screenshots/screenshot-1.png)
 
-## Build
+### 🔎 Character Search using Favorite character
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+![Character Search using Favorite character ](src/assets/screenshots/screenshot-2.png)
 
-## Running unit tests
+### 🔎 Character Search
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![Character Search](src/assets/screenshots/screenshot-3.png)
 
-## Running end-to-end tests
+## 🔧 Technologies Used
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Angular 14**
+- **Angular Material**
+- **TypeScript**
+- **RxJS**
+- **Rick and Morty Public API**
 
-## Further help
+## 📥 Installation & Setup
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To run the project locally, follow these steps:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Nicooo20/rick-morty-app-angular.git
+
+   ```
+
+2. Navigate into the project folder:
+   cd rick-morty-app-angular
+
+3. Install dependencies:
+   npm install
+
+4. Start the development server:
+   ng serve
+
+5. Open your browser and visit:
+   http://localhost:4200/
+
+🔎 Features
+✅ Fully responsive design (mobile-friendly)
+✅ More functions !!!
+
+## 📬 Contact
+
+If you have any questions or suggestions, feel free to reach out:
+
+- 📧 Email: [nicolas.techdev@gmail.com](mailto:nicolas.techdev@gmail.com)
+- 🐙 GitHub: [Nicooo20](https://github.com/Nicooo20)
