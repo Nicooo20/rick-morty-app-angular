@@ -1,4 +1,4 @@
-<div *ngIf="character" class="details-container">
+<div #detallePersonaje *ngIf="character" class="details-container">
   <mat-card class="character-card">
     <div class="character-header">{{ character.name }}</div>
     <img mat-card-image [src]="character.image" alt="{{ character.name }}" class="character-image"/>
