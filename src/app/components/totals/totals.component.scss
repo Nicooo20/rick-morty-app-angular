@@ -2,10 +2,10 @@
     background-color: #2a2a2a; // Fondo oscuro similar a la tabla
     border-radius: 10px;
     box-shadow: 0 0 0.3em 0.2em rgba(0, 188, 212, 0.5); // Sombra resaltada
-    width: 100%; // Para que no esté pegado a la izquierda
+    width: 100%; // Ocupa todo el ancho disponible
     margin: 20px auto; // Centrado
     padding: 10px;
-    border: 1px solid #00bcd4; // Borde similar al diseño de la tabla
+    border: 1px solid #00bcd4; // Borde azul
 }
 
 // Estilos para los títulos de las pestañas
@@ -23,7 +23,7 @@
     border-bottom: 3px solid #00bcd4;
 }
 
-// Estilo del contenido dentro del tab
+// Contenedor de contenido dentro de cada tab
 .custom-tab-content {
     padding: 16px;
     color: white;
@@ -37,6 +37,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px; // Espaciado entre elementos
+    justify-content: center; // Centrar los elementos horizontalmente
 }
 
 .custom-tab-content li {
@@ -44,8 +45,7 @@
     padding: 10px;
     border-radius: 5px;
     border-left: 4px solid #00bcd4;
-    flex: 1 1 calc(33.333% - 10px); // Se distribuyen en 3 columnas, restando el gap
+    flex: 1 1 calc(25% - 10px); // Ahora en 4 columnas en lugar de 3
     text-align: center;
+    min-width: 150px; // Asegura que los elementos no sean demasiado pequeños
 }
-
-

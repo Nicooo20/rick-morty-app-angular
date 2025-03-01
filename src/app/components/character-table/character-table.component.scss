@@ -13,38 +13,87 @@ $input-bg: #00b5cc;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 0.7em 0.4em $secondary-color;
+    max-height: 75vh; // Limita la altura al 75% de la pantalla
+    overflow-y: auto; // Si se pasa, permite scroll solo en la tabla
+}
+
+mat-icon {
+    transition: transform 0.2s ease-in-out;
+    color: $secondary-color; // Verde neón para los íconos
+}
+
+button:hover mat-icon {
+    transform: scale(1.2);
+    color: $primary-color; // Un color llamativo en hover
+}
+
+button.mat-icon-button {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.2); // Aumenta un poco el tamaño
+        box-shadow: 0 0 10px #00b5cc, 0 0 20px #00b5cc; // Brillo neón
+    }
+
+    &:active {
+        transform: scale(1); // Evita que se agrande demasiado al hacer clic
+    }
 }
 
 // Filtros de búsqueda mejorados
-::ng-deep.filters {
+.filter-container {
     display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 20px;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
 
-    mat-form-field {
-        background: $primary-color; // Fondo del input
-        border-radius: 8px;
-        padding: 4px 10px;
-
-        mat-select {
-            color: white !important; // Color del texto cuando se selecciona un valor
-        }
-
-        // Asegurar que el texto seleccionado en `mat-select` sea blanco
-        .mat-select-value {
-            color: white !important;
-        }
-
-        // Placeholder blanco antes de seleccionar
-        .mat-select-placeholder {
-            color: rgba(29, 28, 28, 0.932) !important;
-        }
-    }
-
-
+    // .custom-filter {
+    //     width: 250px;
+    //     background: rgba(0, 0, 0, 0.8);
+    //     border-radius: 8px;
+    // }
 
 }
+
+mat-form-field {
+    border-radius: 8px;
+    font-size: 14px;
+    color: white;
+
+    mat-select {
+        font-size: 14px;
+        color: white !important; // Color del texto cuando se selecciona un valor
+    }
+
+    // Placeholder blanco antes de seleccionar
+    .mat-select-placeholder {
+        color: rgba(29, 28, 28, 0.932) !important;
+    }
+
+    .mat-form-field-label {
+        color: rgba(255, 255, 255, 0.7) !important; // Placeholder más tenue
+    }
+}
+
+::ng-deep.mat-select-value {
+    color: white !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #00ffcc;
+    border-color: #00ffcc;
+}
+
+::ng-deep .mat-form-field-label {
+    color: #00ffcc !important;
+}
+
+::ng-deep .mat-input-element {
+    color: white;
+}
+
 
 // Estilos para el panel desplegable del select
 .mat-select-panel {
@@ -65,8 +114,6 @@ $input-bg: #00b5cc;
 
 input {
     color: white !important; // Texto blanco dentro del input
-    background: $input-bg !important; // Mismo fondo del select
-    border: 1px solid $primary-color;
     border-radius: 4px;
 }
 
@@ -82,21 +129,28 @@ table {
     overflow: hidden;
     background: rgba(255, 255, 255, 0.05); // Un tono más claro
     border: 1px solid $primary-color;
+    font-size: 12px; // Reducir tamaño del texto de la tabla
+    border-spacing: 0; // Evita espacios extra entre celdas
 
     th {
         background: $primary-color;
         color: $text-color;
-        padding: 12px;
+        padding: 6px 8px; // Reducir padding dentro de las celdas
         text-align: left;
         font-weight: bold;
+        font-size: 12px;
 
-        
+
     }
 
     td {
-        padding: 10px;
+        font-size: 12px;
         color: $text-color;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    tr {
+        height: 24px; // Ajusta la altura de las filas
     }
 
     tr:hover {
@@ -106,20 +160,47 @@ table {
 
 
 // Paginador mejorado
-mat-paginator {
+.pagination {
+    display: flex;
+    justify-content: center;
     margin-top: 16px;
-    background: $dark-bg;
+    gap: 8px;
+    background: $dark-bg; // Mismo fondo oscuro que la tabla
+    padding: 10px;
     border-radius: 8px;
-    color: $text-color;
 
-    .mat-option {
-        color: white !important; // Color de las opciones
-    }
+    button {
+        padding: 8px 12px;
+        border: 2px solid $primary-color; // Borde celeste brillante
+        background-color: $primary-color;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 0 5px $primary-color;
 
-    .mat-option.mat-selected {
-        background-color: #00bcd4 !important; // Color resaltado cuando está seleccionado
+        &:hover:not(:disabled) {
+            background-color: rgba(17, 204, 0, 0.3); // Resalta en hover
+            box-shadow: 0 0 10px $primary-color, 0 0 20px $primary-color; // Efecto neón
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            border-color: rgba(69, 115, 121, 0.26);
+            color: #f0f0f0;
+            opacity: 0.5;
+        }
+
+        &.active {
+            background-color: $secondary-color; // Verde neón
+            color: $text-color;
+            border-color: $secondary-color;
+            box-shadow: 0 0 10px $secondary-color, 0 0 20px $secondary-color;
+        }
     }
 }
+
 
 ::ng-deep .mat-paginator-page-size .mat-select-trigger {
     // color: white !important; // Cambia el color del texto
@@ -131,11 +212,19 @@ mat-paginator {
 
 ::ng-deep .mat-sort-header-arrow {
     color: $secondary-color !important;
-  }
+}
 
 
+@media screen and (max-width: 768px) {
+    .main-table {
+        width: 100%;
+        background: linear-gradient(135deg, #1e1e1e, #2e2e2e); // Degradado sutil
+        border-radius: 10px;
+        box-shadow: 0 0 0.7em 0.4em $secondary-color;
+        max-height: 75vh; // Limita la altura al 75% de la pantalla
+        overflow-y: auto; // Si se pasa, permite scroll solo en la tabla
+    }
 
-
-
-
+    
+}
 

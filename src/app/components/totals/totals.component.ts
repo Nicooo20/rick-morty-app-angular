@@ -10,6 +10,9 @@ export class TotalsComponent implements OnInit {
 
   speciesTotals: { species: string; count: number }[] = [];
   typeTotals: { type: string; count: number }[] = [];
+  // Totales Globales (Todos los personajes)
+  globalSpeciesTotals: { species: string; count: number }[] = [];
+  globalTypeTotals: { type: string; count: number }[] = [];
 
   constructor(private sharedData: SharedDataService) {}
 
@@ -18,6 +21,12 @@ export class TotalsComponent implements OnInit {
     this.sharedData.currentTotals.subscribe((totals) => {
       this.speciesTotals = totals.speciesTotals.sort((a, b) => a.species.localeCompare(b.species)); //aplicamos sort para ordenar alfabeticamente
       this.typeTotals = totals.typeTotals.sort((a, b) => a.type.localeCompare(b.type)); //aplicamos sort para ordenar alfabeticamente
+    });
+
+    // Suscribirse al servicio para recibir los totales globales
+    this.sharedData.globalTotals.subscribe((totals) => {
+      this.globalSpeciesTotals = totals.speciesTotals.sort((a, b) => a.species.localeCompare(b.species)); //aplicamos sort para ordenar alfabeticamente
+      this.globalTypeTotals = totals.typeTotals.sort((a, b) => a.type.localeCompare(b.type)); //aplicamos sort para ordenar alfabeticamente
     });
   }
 }

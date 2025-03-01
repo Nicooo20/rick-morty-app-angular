@@ -1,20 +1,40 @@
 <mat-tab-group class="custom-tabs">
+  <!-- Totales por Especie -->
   <mat-tab label="Total Species">
-    <div class="custom-tab-content">
+    <div class="custom-tab-content" *ngIf="speciesTotals.length">
+      <h3>Total Especies por página</h3>
       <ul>
-        <li *ngFor="let item of speciesTotals">
-          {{ item.species }}: {{ item.count }}
-        </li>
+        <li *ngFor="let total of speciesTotals">{{ total.species }}: {{ total.count }}</li>
       </ul>
     </div>
   </mat-tab>
 
+  <!-- Totales por Tipo -->
   <mat-tab label="Total Types">
-    <div class="custom-tab-content">
+    <div class="custom-tab-content" *ngIf="typeTotals.length">
+      <h3>Total Tipos por página</h3>
       <ul>
-        <li *ngFor="let item of typeTotals">
-          {{ item.type }}: {{ item.count }}
-        </li>
+        <li *ngFor="let total of typeTotals">{{ total.type }}: {{ total.count }}</li>
+      </ul>
+    </div>
+  </mat-tab>
+
+  <!-- Totales Globales por Especie -->
+  <mat-tab label="Total Global Species">
+    <div class="custom-tab-content" *ngIf="globalSpeciesTotals.length">
+      <h3>Totales por Especie (Todos los Personajes)</h3>
+      <ul>
+        <li *ngFor="let total of globalSpeciesTotals">{{ total.species }}: {{ total.count }}</li>
+      </ul>
+    </div>
+  </mat-tab>
+
+  <!-- Totales Globales por Tipo -->
+  <mat-tab label="Total Global Types">
+    <div class="custom-tab-content" *ngIf="globalTypeTotals.length">
+      <h3>Totales por Tipo (Todos los Personajes)</h3>
+      <ul>
+        <li *ngFor="let total of globalTypeTotals">{{ total.type }}: {{ total.count }}</li>
       </ul>
     </div>
   </mat-tab>

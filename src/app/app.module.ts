@@ -24,6 +24,7 @@ import { MatTabsModule } from '@angular/material/tabs'; // Para las pestañas de
 import { MatPaginatorModule } from '@angular/material/paginator'; // Para la paginación de la tabla
 import { MatIconModule } from '@angular/material/icon'; // Para íconos
 import { MatSortModule } from '@angular/material/sort'; // Para ordenar la tabla
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { SharedModule } from './shared/shared.module';
 
@@ -55,6 +56,7 @@ import { SharedModule } from './shared/shared.module';
     MatIconModule, 
     MatToolbarModule,
     MatSortModule,
+    MatTooltipModule,
 
     SharedModule
   ],

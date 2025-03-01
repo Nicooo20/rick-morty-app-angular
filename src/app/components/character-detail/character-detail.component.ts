@@ -59,15 +59,16 @@ export class CharacterDetailComponent implements OnInit {
 
   //Obtenemos el residente de una localización dada (origen o ubicación actual).
   fetchResident(locationUrl: string, type: 'origin' | 'location') {
-    this.rickAndMortyService.getLocationByUrl(locationUrl).subscribe((locationData) => {
+    this.rickAndMortyService.getLocationByUrl(locationUrl).subscribe((locationData) => { //Obtenemos la información de la localización como primera parte
       const residents = locationData.residents;
       if (residents.length > 0) {
         const firstResidentId = residents[0].split('/').pop();
-        this.rickAndMortyService.getCharacterById(firstResidentId).subscribe((residentData) => {
-          if (type === 'origin') {
+
+        this.rickAndMortyService.getCharacterById(firstResidentId).subscribe((residentData) => { //Obtenemos la información del residente
+          if (type === 'origin') { //Si es origen, lo asignamos a la variable originResident
             this.originResident = residentData.name;
           } else {
-            this.locationResident = residentData.name;
+            this.locationResident = residentData.name; //Si es ubicación actual, lo asignamos a la variable locationResident
           }
         });
       } else {

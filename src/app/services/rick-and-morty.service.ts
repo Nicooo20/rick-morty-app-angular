@@ -23,6 +23,10 @@ export class RickAndMortyService {
     return this.http.get(`${this.apiUrl}/character/${id}`);
   }
 
+  getCharactersByUrl(url: string) {
+    return this.http.get<any>(url);
+  }
+
   // Filtrar personajes por nombre y estado
   filterCharacters(name: string, status: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/character/?name=${name}&status=${status}`);

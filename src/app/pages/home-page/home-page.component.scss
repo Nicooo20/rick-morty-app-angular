@@ -31,9 +31,10 @@ app-totals {
         align-items: center;
     }
 
-    .table-section,
-    .detail-section,
-    app-totals {
+    .table-section{
         width: 100%;
+        padding-right: 2.5rem;
     }
 }
+
+

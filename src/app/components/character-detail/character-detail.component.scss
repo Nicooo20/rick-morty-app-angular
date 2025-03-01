@@ -16,11 +16,14 @@ $input-bg: #00b5cc;
     background-color: #2a2a2a; // Mismo fondo que la tabla
     color: white;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 197, 27, 0.582);
-    width: 100%;
+    border: 1px solid #00ff88;
+    text-align: center;
+    padding: 16px;
     max-width: 350px;
-    border: 1px solid #00ff88; 
-    text-align: center; // Asegura que todo el contenido esté centrado
+    transition: transform 0.3s ease-in-out;
+
+    // Aplica la animación de brillo neón
+    animation: neonGlow 2.5s infinite alternate;
 }
 
 .character-header {
@@ -60,6 +63,7 @@ $input-bg: #00b5cc;
     }
 
 }
+
 .character-info p {
     display: flex;
     align-items: center;
@@ -68,8 +72,40 @@ $input-bg: #00b5cc;
 
 }
 
+img {
+    transition: transform 0.3s ease-in-out;
+    animation: neonGlowRed 2.5s infinite alternate;
+}
+
 mat-icon {
     color: $secondary-color !important;
     fill: $secondary-color !important;
 }
 
+@keyframes neonGlow {
+    0% {
+        box-shadow: 0 0 5px $secondary-color, 0 0 10px $secondary-color, 0 0 15px $secondary-color;
+    }
+
+    50% {
+        box-shadow: 0 0 10px $secondary-color, 0 0 20px $secondary-color, 0 0 30px $secondary-color;
+    }
+
+    100% {
+        box-shadow: 0 0 5px $secondary-color, 0 0 10px $secondary-color, 0 0 15px $secondary-color;
+    }
+}
+
+@keyframes neonGlowRed {
+    0% {
+        box-shadow: 0 0 5px #ca2525, 0 0 10px #ca2525, 0 0 15px #ca2525;
+    }
+
+    50% {
+        box-shadow: 0 0 10px #ca2525, 0 0 20px #ca2525, 0 0 30px #ca2525;
+    }
+
+    100% {
+        box-shadow: 0 0 5px #ca2525, 0 0 10px #ca2525, 0 0 15px #ca2525;
+    }
+}

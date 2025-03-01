@@ -3,12 +3,33 @@
     color: #00ff88; // Texto verde ácido
     padding: 0 16px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); // Sombra suave
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .title {
     font-size: 24px;
     font-weight: bold;
     letter-spacing: 1px;
+    animation: neon-glow 2s infinite alternate;
+    display: flex;
+    align-items: center; // Asegura que "By Nicolas TechDev" quede alineado correctamente
+    gap: 8px; // Espacio entre el título y el texto de la marca
+
+    .brand {
+        font-size: 14px;
+        font-weight: normal;
+        opacity: 0.8;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+.character-icon {
+    cursor: pointer;
 }
 
 .spacer {
@@ -26,7 +47,7 @@
 
     &:hover {
         background-color: #9b59b6; // Morado más claro al pasar el mouse
-        transform: scale(1.05); // Efecto de escala al pasar el mouse
+        transform: scale(1.05);
     }
 
     .favorite-icon {
@@ -38,7 +59,85 @@
         font-size: 16px;
         font-weight: 500;
     }
+
     .favorite-name:first-of-type {
-        margin-right: 8px; /* Ajusta este valor según lo necesites */
+        margin-right: 8px;
+    }
+}
+
+// Estilos para las imágenes de Rick y Morty
+@keyframes floating {
+    0% {
+        transform: translateY(0); // Posición inicial
+    }
+
+    50% {
+        transform: translateY(-10px); // Flotar hacia arriba
+    }
+
+    100% {
+        transform: translateY(0); // Volver a la posición inicial
+    }
+}
+
+@keyframes neon-glow {
+    0% {
+        text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88, 0 0 15px #00ff88;
+    }
+
+    50% {
+        text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88;
+    }
+
+    100% {
+        text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88, 0 0 15px #00ff88;
+    }
+}
+
+
+.character-icon {
+    width: 50px;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+    border: 2px solid #00ff88; // Borde verde brillante
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ff88; // Efecto de brillo
+    animation: floating 3s ease-in-out infinite; // Animación de flotación
+
+    &.rick {
+        margin-right: 16px;
+    }
+
+    &.morty {
+        margin-left: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        // flex-direction: column; // Apila los elementos verticalmente
+        display: table;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 1.5rem; // Ajusta el tamaño del texto
+    }
+
+    img {
+        display: none; // Oculta los iconos en pantallas pequeñas
+    }
+
+    .favorite {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .spacer {
+        display: none; // Evita espacios innecesarios
     }
 }

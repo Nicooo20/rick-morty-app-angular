@@ -1,24 +1,19 @@
 <div class="main-table">
   <!-- Filtros -->
-  <div class="filters">
-    <mat-form-field>
-      <input
-        matInput
-        [(ngModel)]="filterName"
-        placeholder="Filtrar por nombre"
-        (ngModelChange)="applyFilters()"
-      />
+  <div class="filter-container">
+    <mat-form-field appearance="outline" class="custom-filter">
+      <mat-label>Filtrar por nombre</mat-label>
+      <input matInput [(ngModel)]="filterName" (input)="applyFilters()">
+      <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
-
-    <mat-form-field>
-      <mat-select
-        [(ngModel)]="filterStatus"
-        placeholder="Filtrar por estado"
-        (ngModelChange)="applyFilters()"
-      >
+  
+    <mat-form-field appearance="outline" class="custom-filter">
+      <mat-label>Filtrar por estado</mat-label>
+      <mat-select [(value)]="filterStatus" (selectionChange)="applyFilters()">
         <mat-option value="">Todos</mat-option>
-        <mat-option value="alive">Vivo</mat-option>
-        <mat-option value="dead">Muerto</mat-option>
+        <mat-option value="Alive">Vivo 🟢</mat-option>
+        <mat-option value="Dead">Muerto 🔴</mat-option>
+        <mat-option value="unknown">Desconocido ⚪</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -66,8 +61,13 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Acciones</th>
       <td mat-cell *matCellDef="let character">
-        <button mat-button (click)="selectCharacter(character)">Seleccionar</button>
-        <button mat-button (click)="markAsFavorite(character)">Favorito</button>
+        <button mat-icon-button  color="primary" (click)="selectCharacter(character)" matTooltip="Seleccionar Personaje" matTooltipPosition="left"> 
+          <mat-icon>visibility</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" (click)="markAsFavorite(character)" matTooltip="Agregar a Favoritos" matTooltipPosition="right">
+          <mat-icon>star</mat-icon>
+        </button>
       </td>
     </ng-container>
 
@@ -76,15 +76,33 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <!-- Paginador -->
-  <!-- <mat-paginator
+  <!-- Paginador (Personalizado) -->
+  
+<div class="pagination">
+
+  <button (click)="goToFirstPage()" [disabled]="!hasPrevPage">Primera</button>
+  <button (click)="goToPreviousPage()" [disabled]="!hasPrevPage">Anterior</button>
+  
+  <!-- Números de página -->
+  <button
+    *ngFor="let page of getPageNumbers()"
+    (click)="goToPage(page)"
+    [class.active]="page === currentPage"
+  >
+    {{ page }}
+  </button>
+
+  <button (click)="goToNextPage()" [disabled]="!hasNextPage">Siguiente</button>
+  <button (click)="goToLastPage()" [disabled]="!hasNextPage">Última</button>
+</div>
+  <!-- Paginador (Angular Material) -->
+
+    <!-- <mat-paginator
+    #paginator
+    [pageSize]="10"
     [pageSizeOptions]="[10, 20, 50]"
-    showFirstLastButtons
-    (page)="loadCharacters($event.pageIndex + 1)"
-  ></mat-paginator> -->
-  <mat-paginator 
-  [pageSizeOptions]="[10, 20]"
-  showFirstLastButtons
-  (page)="onPageChange($event)">
-</mat-paginator>
+    (page)="onPageChange($event)">
+    </mat-paginator> -->
+<!-- <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 50]" [length]="totalCharacters"
+(page)="mostrarMas($event)"></mat-paginator> -->
 </div>

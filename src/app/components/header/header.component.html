@@ -1,5 +1,14 @@
 <mat-toolbar color="primary" class="header">
-  <span class="title">Rick and Morty App</span>
+  <a href="https://rickandmortyapi.com/" target="_blank">
+    <img src="assets/icons8-rick.png" alt="Rick" class="character-icon rick" />
+  </a>
+  <span class="title">
+    Rick and Morty App
+    <span class="brand">By Nicolas TechDev</span>
+  </span>
+  <a href="https://iconos8.es/icons/set/favicon-rick-and-morty" target="_blank">
+    <img src="assets/icons8-morty.png" alt="Morty" class="character-icon morty" />
+  </a>
   <span class="spacer"></span>
   <div *ngIf="favoriteCharacter" (click)="showFavoriteDetails()" class="favorite">
     <mat-icon class="favorite-icon">star</mat-icon>
