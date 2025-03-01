@@ -65,7 +65,7 @@
           <mat-icon>visibility</mat-icon>
         </button>
 
-        <button mat-icon-button color="accent" (click)="markAsFavorite(character)" matTooltip="Agregar a Favoritos" matTooltipPosition="right">
+        <button mat-icon-button color="accent" (click)="markAsFavorite(character); $event.stopPropagation()" matTooltip="Agregar a Favoritos" matTooltipPosition="right">
           <mat-icon>star</mat-icon>
         </button>
       </td>
@@ -73,7 +73,7 @@
 
     <!-- Filas -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectCharacter(row)" (click)="$event.stopPropagation()"></tr>
   </table>
 
   <!-- Paginador (Personalizado) -->
