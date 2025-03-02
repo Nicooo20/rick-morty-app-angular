@@ -273,13 +273,22 @@ export class CharacterTableComponent implements OnInit {
     }
   }
 
+  // applyFilters() {
+  //   this.currentPage = 0; // Reiniciar la paginación
+  //   this.nextPageUrl = null; // Reiniciar la URL de la siguiente página
+  //   this.prevPageUrl = null; // Reiniciar la URL de la página anterior
+  //   this.loadCharacters(); // Cargar la primera página con los filtros aplicados
+  // }
   applyFilters() {
-    this.currentPage = 0; // Reiniciar la paginación
-    this.nextPageUrl = null; // Reiniciar la URL de la siguiente página
-    this.prevPageUrl = null; // Reiniciar la URL de la página anterior
-
-    this.loadCharacters(); // Cargar la primera página con los filtros aplicados
+    this.currentPage = 1; // Reiniciar a la primera página
+    this.store.dispatch(CharacterActions.loadCharacters({ 
+      page: this.currentPage, 
+      name: this.filterName.trim(), 
+      status: this.filterStatus.trim() 
+    }));
   }
+  
+
   // Método para seleccionar un personaje
   selectCharacter(character: any) {
     this.sharedData.changeCharacterId(character.id); // Actualizar el ID del personaje seleccionado
@@ -341,7 +350,11 @@ export class CharacterTableComponent implements OnInit {
   goToPreviousPage() {
     this.prevPageUrl$.pipe(first()).subscribe(prevPage => {
       if (prevPage) {
-        this.store.dispatch(CharacterActions.loadCharacters({ page: this.getPageFromUrl(prevPage), name: '', status: '' }));
+        this.store.dispatch(CharacterActions.loadCharacters({ 
+          page: this.getPageFromUrl(prevPage), 
+          name: this.filterName.trim(), 
+          status: this.filterStatus.trim() 
+        }));
       }
     });
   }
@@ -353,8 +366,15 @@ export class CharacterTableComponent implements OnInit {
   // }
 
   // Método para ir a una página específica (con REDUX)
+  // goToPage(page: number) {
+  //   this.store.dispatch(CharacterActions.loadCharacters({ page, name: '', status: '' }));
+  // }
   goToPage(page: number) {
-    this.store.dispatch(CharacterActions.loadCharacters({ page, name: '', status: '' }));
+    this.store.dispatch(CharacterActions.loadCharacters({ 
+      page, 
+      name: this.filterName.trim(), 
+      status: this.filterStatus.trim() 
+    }));
   }
 
   // Método para ir a la página siguiente (sin REDUX)
@@ -369,7 +389,11 @@ export class CharacterTableComponent implements OnInit {
   goToNextPage() {
     this.nextPageUrl$.pipe(first()).subscribe(nextPage => {
       if (nextPage) {
-        this.store.dispatch(CharacterActions.loadCharacters({ page: this.getPageFromUrl(nextPage), name: '', status: '' }));
+        this.store.dispatch(CharacterActions.loadCharacters({ 
+          page: this.getPageFromUrl(nextPage), 
+          name: this.filterName.trim(), 
+          status: this.filterStatus.trim() 
+        }));
       }
     });
   }
