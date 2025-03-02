@@ -24,6 +24,7 @@ Here are some screenshots of the application:
 - **Angular Material**
 - **TypeScript**
 - **RxJS**
+- **Redux**
 - **Rick and Morty Public API**
 
 ## 📥 Installation & Setup
