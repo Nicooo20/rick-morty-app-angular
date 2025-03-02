@@ -28,6 +28,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { SharedModule } from './shared/shared.module';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { reducers } from './store/app.state';
+import { CharacterEffects } from './store/effects/character.effects';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +63,10 @@ import { SharedModule } from './shared/shared.module';
     MatSortModule,
     MatTooltipModule,
 
-    SharedModule
+    SharedModule,
+
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([CharacterEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

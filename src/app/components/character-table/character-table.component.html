@@ -6,7 +6,7 @@
       <input matInput [(ngModel)]="filterName" (input)="applyFilters()">
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
-  
+
     <mat-form-field appearance="outline" class="custom-filter">
       <mat-label>Filtrar por estado</mat-label>
       <mat-select [(value)]="filterStatus" (selectionChange)="applyFilters()">
@@ -19,7 +19,8 @@
   </div>
 
   <!-- Tabla de personajes -->
-  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+    class="mat-elevation-z8">
 
     <!-- Columna Nombre -->
     <ng-container matColumnDef="name">
@@ -61,11 +62,13 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Acciones</th>
       <td mat-cell *matCellDef="let character">
-        <button mat-icon-button  color="primary" (click)="selectCharacter(character)" matTooltip="Seleccionar Personaje" matTooltipPosition="left"> 
+        <button mat-icon-button color="primary" (click)="selectCharacter(character)" matTooltip="Seleccionar Personaje"
+          matTooltipPosition="left">
           <mat-icon>visibility</mat-icon>
         </button>
 
-        <button mat-icon-button color="accent" (click)="markAsFavorite(character); $event.stopPropagation()" matTooltip="Agregar a Favoritos" matTooltipPosition="right">
+        <button mat-icon-button color="accent" (click)="markAsFavorite(character); $event.stopPropagation()"
+          matTooltip="Agregar a Favoritos" matTooltipPosition="right">
           <mat-icon>star</mat-icon>
         </button>
       </td>
@@ -73,36 +76,30 @@
 
     <!-- Filas -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectCharacter(row)" (click)="$event.stopPropagation()"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectCharacter(row)"
+      (click)="$event.stopPropagation()"></tr>
   </table>
 
   <!-- Paginador (Personalizado) -->
-  
-<div class="pagination">
+  <div class="pagination">
 
-  <button (click)="goToFirstPage()" [disabled]="!hasPrevPage">Primera</button>
-  <button (click)="goToPreviousPage()" [disabled]="!hasPrevPage">Anterior</button>
-  
-  <!-- Números de página -->
-  <button
-    *ngFor="let page of getPageNumbers()"
-    (click)="goToPage(page)"
-    [class.active]="page === currentPage"
-  >
-    {{ page }}
-  </button>
+    <button (click)="goToFirstPage()" [disabled]="!hasPrevPage">Primera</button>
+    <button (click)="goToPreviousPage()" [disabled]="!hasPrevPage">Anterior</button>
 
-  <button (click)="goToNextPage()" [disabled]="!hasNextPage">Siguiente</button>
-  <button (click)="goToLastPage()" [disabled]="!hasNextPage">Última</button>
-</div>
-  <!-- Paginador (Angular Material) -->
+    <!-- Números de página con Redux -->
+    <button *ngFor="let page of visiblePages" (click)="goToPage(page)" [class.active]="page === currentPage">
+      {{ page }}
+    </button>
+    <!-- Números de página sin REDUX -->
+      <!-- <button
+      *ngFor="let page of getPageNumbers()"
+      (click)="goToPage(page)"
+      [class.active]="page === currentPage"
+    >
+      {{ page }}
+    </button> -->
 
-    <!-- <mat-paginator
-    #paginator
-    [pageSize]="10"
-    [pageSizeOptions]="[10, 20, 50]"
-    (page)="onPageChange($event)">
-    </mat-paginator> -->
-<!-- <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 50]" [length]="totalCharacters"
-(page)="mostrarMas($event)"></mat-paginator> -->
+    <button (click)="goToNextPage()" [disabled]="!hasNextPage">Siguiente</button>
+    <button (click)="goToLastPage()" [disabled]="!hasNextPage">Última</button>
+  </div>
 </div>
